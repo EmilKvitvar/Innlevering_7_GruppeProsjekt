@@ -1,4 +1,4 @@
-# DAT120 – Øving 7  - Emil LK Joakim G
+# DAT120 – Øving 7  - Emil LK Joakim Gul
 ## Gruppeprosjekt del 1: Studieplan-meny
 
 ### Om prosjektet
