@@ -1,0 +1,39 @@
+def check_float(variabel):
+    while True:
+        multiplikator = {"m": 1_000_000, "k": 1_000 } #prøver noe nytt 
+        verdi = input(variabel).strip().lower().replace(",",".")
+        if verdi.endswith("x"):
+            return None
+        try:
+            if verdi[-1] in multiplikator:
+                return float(verdi[:-1]) * multiplikator[verdi[-1]]
+            else:
+                return float(verdi)
+        
+        except ValueError:
+            print("Skriv et gyldig tall")
+        
+def check_int(variabel):
+    while True:
+        multiplikator = {"m": 1_000_000, "k": 1_000 }
+        verdi = input(variabel).lower().strip().replace(";",".")
+
+        if verdi.endswith("x"):
+            return None
+        try:
+            if verdi[-1] in multiplikator:
+                return int(verdi[:-1]) * multiplikator[verdi[-1]]
+            
+            else:
+                return int(verdi)
+        except ValueError:
+            print("Skriv et gyldig tall")
+
+def check_var(variabel):
+    while True:
+        verdi = input(variabel).lower().strip().replace("å","aa").replace("ø","o").replace("æ","ae")
+
+        if verdi.endswith("x"):
+            return None
+        else:
+            return verdi
