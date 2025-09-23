@@ -38,6 +38,29 @@ def check_var(variabel):
         else:
             return verdi
 
+def Nytt_emne():
+    while True:
+        Nytt_emne_navn = input("Hva er Emnekoden? eks:DAT120: ")
+        if Nytt_emne_navn = "x":
+            return None
+
+        xsemester = input("Er det høst eller vår semester? ").lower().strip()
+        if xsemester == "x":
+            return None
+        elif xsemester == "høst" or xsemester == "host" or xsemester == "1":
+            semester = "høst"
+        elif xsemester == "vår" or xsemester == "vaar" or xsemester == "2":
+            semester = "vår"
+        else:
+            "Skriv høst eller vår!"
+            print("Trykk enter")
+        
+        
+    
+    return Nytt_emne_navn,semester,studiepoeng
+    
+
+
 def meny():
     print(f"-----------Meny-----------\
             \n1. Lag et nytt emne\
