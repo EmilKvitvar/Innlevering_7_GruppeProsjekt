@@ -15,23 +15,18 @@ while True:
             break
 
       elif valg == 1: #Lag et nytt emne 
-            resultat = E.Nytt_emne()  # Kaller funksjonen og lagrer resultatet
+            # Slik "fanger" du verdiene som returneres fra funksjonen:
+            emnenavn, semester, studiepoeng = E.Nytt_emne()
             
-            if resultat == None:  # Brukeren avbrøt
-                print("Avbrutt!")
-            else:
-                # "Henter" verdiene fra funksjonen
-                emnenavn, semester, studiepoeng = resultat
-                
-                print(f"\nNytt emne opprettet:")
-                print(f"Emnekode: {emnenavn}")
-                print(f"Semester: {semester}")
-                print(f"Studiepoeng: {studiepoeng}")
-                
-                # Legger emnet til i listen
-                Emnekoder.append({"navn": emnenavn, "semester": semester, "studiepoeng": studiepoeng})
-                
-            input("Trykk enter for å fortsette...")
+            # Nå har du verdiene i separate variabler:
+            print(f"Emnenavn: {emnenavn}")
+            print(f"Semester: {semester}")
+            print(f"Studiepoeng: {studiepoeng}")
+            
+            # Du kan også lagre i listen
+            Emnekoder.append(emnenavn)
+            
+            input("Trykk enter...")
       
       elif valg == 2:
             #Legg til et emne i studeplanen

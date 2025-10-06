@@ -44,7 +44,7 @@ def Nytt_emne():
         if Nytt_emne_navn == "x":
             return None
         while True:
-            xsemester = input("Er det høst eller vår semester? ").lower().strip()
+            xsemester = input("Hvilket semester? \n [1] Høst \n [2] Vår ").lower().strip()
             if xsemester == "x":
                 return None
             elif xsemester == "høst" or xsemester == "host" or xsemester == "1":
@@ -73,8 +73,6 @@ def Nytt_emne():
                     continue
             else:
                 break  # Studiepoeng er gyldig (0-30)
-        
-        break  # Komme ut av den ytterste while-løkka
     
         return Nytt_emne_navn, semester, studiepoeng
     
@@ -91,3 +89,5 @@ def meny():
             \n6. Lagre emnene og studieplanen til fil\
             \n7. Les inn emnene og studeplanen fra fil\
             \nX. Avslutt")
+
+Nytt_emne()
