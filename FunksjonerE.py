@@ -40,25 +40,45 @@ def check_var(variabel):
 
 def Nytt_emne():
     while True:
-        Nytt_emne_navn = input("Hva er Emnekoden? eks:DAT120: ")
-        if Nytt_emne_navn = "x":
+        Nytt_emne_navn = check_var("Hva er Emnekoden? eks:DAT120: ")
+        if Nytt_emne_navn == "x":
             return None
+        while True:
+            xsemester = input("Er det høst eller vår semester? ").lower().strip()
+            if xsemester == "x":
+                return None
+            elif xsemester == "høst" or xsemester == "host" or xsemester == "1":
+                semester = 1
+                break
+            elif xsemester == "vår" or xsemester == "vaar" or xsemester == "2":
+                semester = 2
+                break
+            else:
+                "Skriv høst eller vår!"
+                print("Trykk enter")
 
-        xsemester = input("Er det høst eller vår semester? ").lower().strip()
-        if xsemester == "x":
-            return None
-        elif xsemester == "høst" or xsemester == "host" or xsemester == "1":
-            semester = "høst"
-        elif xsemester == "vår" or xsemester == "vaar" or xsemester == "2":
-            semester = "vår"
-        else:
-            "Skriv høst eller vår!"
-            print("Trykk enter")
+        while True:
+            studiepoeng = check_float("Hvor mange studiepoeng gir emnet? ")
+            if studiepoeng == None:  # Hvis brukeren trykker 'x'
+                return None
+            elif studiepoeng < 0:
+                print("Det kan ikke være mindre enn 0")
+            elif studiepoeng > 30:
+                print("Jeg tror kanskje du har skrevet litt høyt studiepoeng")
+                print(f"Er du sikker på at {studiepoeng} er riktig?")
+                korrekt = check_var("[1] Ja \n[2] Nei \n")
+                if korrekt == "1" or korrekt == "ja":
+                    break
+                else:
+                    continue
+            else:
+                break  # Studiepoeng er gyldig (0-30)
         
-        
+        break  # Komme ut av den ytterste while-løkka
     
-    return Nytt_emne_navn,semester,studiepoeng
+        return Nytt_emne_navn, semester, studiepoeng
     
+
 
 
 def meny():
