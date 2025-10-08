@@ -26,6 +26,7 @@ def lag_nytt_emne():
 
 
 def importer_studieplan(filnavn, Emnenavn, Semester, Studiepoeng):
+    filnavn = "Studieplan_energi.txt"
     """
     Leser fag fra tekstfil og fyller listene Emnenavn, Semester og Studiepoeng.
     Format i filen skal være:
