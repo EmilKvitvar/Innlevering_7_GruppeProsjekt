@@ -7,3 +7,24 @@ def meny():
     print("lagre emnene og studieplanen til fil")
     print("les inn emnene og studieplan til fil")
     print("avslutt")
+
+
+
+emnekoder         = []    #fag
+semestre          = []    # oddetall(høst) og partall(vår)
+studiepoeng_liste = []    # heltall
+
+def lag_nytt_emne():
+    kode = input( "skriv emnekode her:")
+    semester = input("skriv semester, (høst/ vår):")
+    studiepoeng = int(input("skriv inn antall studeipoeng:"))
+
+    emnekoder.append(kode)
+    semestre.append(semester)
+    studiepoeng_liste.append(studiepoeng)
+
+    print (f"emnet{kode}, ({semester},{studiepoeng} stp) er lagt til")
+    
+lag_nytt_emne()
+print(emnekoder, semestre, studiepoeng)
+
