@@ -63,17 +63,21 @@ def legg_til_emne_i_studieplan(liste_semester, liste_emnekode, liste_studiepoeng
     
     studieplan[semester_studieplan - 1].append(liste_emnekode[emne_index])
     print(f"{liste_emnekode[emne_index]} ble lagt til i studieplanen")
-while True:
-    if __name__ == "__main__":
+
+
+if __name__ == "__main__":
+    while True:
         legg_til_emne_i_studieplan(liste_semester, liste_emnekode,liste_studiepoeng)
         print(studieplan)
+        
 
-def print_liste_av_registrerte_emner(liste_emnekode):
+def print_liste_av_registrerte_emner(liste_emnekode, liste_semester, liste_studiepoeng):
     print("De registrerte emnene er: ")
     nummer = 0
     for i, j, k in zip(liste_emnekode, liste_studiepoeng, liste_semester):
         nummer +=1
         print(f"{nummer}  {i}     {j}     {k}")
+    input("Trykk enter")
 
 if __name__ == "__main__":
     print_liste_av_registrerte_emner(liste_emnekode)
