@@ -1,1 +1,28 @@
-Studieplan energi- og petroleumsteknologi batchlorDAT120 : Høst : 10FYS100 : Høst : 10MAT100 : Høst : 10ENP110 : Vår : 10MAT200 : Vår : 10STA100 : Vår : 10ENP100 : Høst : 10FYS200 : høst : 10KJE101 : Høst : 5MAF310 : høst : 5ELE320 : Vår : 10ENP120 : Vår : 10ENP160 : Vår : 10ENGBAC : Høst : 20GEO130: høst : 10GEO140 : høst : 10GEO100 : høst : 10ENP300 : høst : 10ENP150 : høst : 10ENP130 : høst : 10IND200 : høst : 10 MOD300 : høst : 10MSK250 : høst : 10ING200 : vår :10
+Studieplan energi- og petroleumsteknologi batchlor
+
+
+
+DAT120 : Host : 10
+FYS100 : Host : 10
+MAT100 : Host : 10
+ENP110 : Vaar : 10
+MAT200 : Vaar : 10
+STA100 : Vaar : 10
+ENP100 : Host : 10
+FYS200 : host : 10
+KJE101 : Host : 5
+MAF310 : host : 5
+ELE320 : Vaar : 10
+ENP120 : Vaar : 10
+ENP160 : Vaar : 10
+ENGBAC : Host : 20
+GEO130 : host : 10
+GEO140 : host : 10
+GEO100 : host : 10
+ENP300 : host : 10
+ENP150 : host : 10
+ENP130 : host : 10
+IND200 : host : 10 
+MOD300 : host : 10
+MSK250 : host : 10
+ING200 : vaar : 10
