@@ -9,7 +9,6 @@ def meny():
     print("avslutt")
 
 
-
 emnekoder         = []    #fag
 semestre          = []    # oddetall(høst) og partall(vår)
 studiepoeng_liste = []    # heltall
