@@ -84,6 +84,9 @@ while True:
                   print(f"Studieplanen er ugyldig, du mangler {180-studiepoeng_total} poeng")
             input("Trykk enter...")
 
+      elif valg == 7:
+            Emnenavn_liste,Semester_liste,Studiepoeng_liste, = O.importer_studieplan(Emnenavn_liste, Semester_liste, Studiepoeng_liste)
+
       else:
             print("\n Velg et av valgene ")
             input("Trykk enter")            
