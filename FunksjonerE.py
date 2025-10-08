@@ -41,17 +41,13 @@ def check_var(variabel):
 def Nytt_emne():
     while True:
         Nytt_emne_navn = check_var("Hva er Emnekoden? eks:DAT120: ")
-        if Nytt_emne_navn == "x":
-            return None
         while True:
             xsemester = input("Hvilket semester? \n [1] Høst \n [2] Vår ").lower().strip()
-            if xsemester == "x":
-                return None
-            elif xsemester == "høst" or xsemester == "host" or xsemester == "1":
-                semester = 1
+            if xsemester == "høst" or xsemester == "host" or xsemester == "1":
+                semester = "Høst"
                 break
             elif xsemester == "vår" or xsemester == "vaar" or xsemester == "2":
-                semester = 2
+                semester = "Vår "
                 break
             else:
                 "Skriv høst eller vår!"
@@ -59,9 +55,7 @@ def Nytt_emne():
 
         while True:
             studiepoeng = check_float("Hvor mange studiepoeng gir emnet? ")
-            if studiepoeng == None:  # Hvis brukeren trykker 'x'
-                return None
-            elif studiepoeng < 0:
+            if studiepoeng < 0:
                 print("Det kan ikke være mindre enn 0")
             elif studiepoeng > 30:
                 print("Jeg tror kanskje du har skrevet litt høyt studiepoeng")
@@ -69,10 +63,9 @@ def Nytt_emne():
                 korrekt = check_var("[1] Ja \n[2] Nei \n")
                 if korrekt == "1" or korrekt == "ja":
                     break
-                else:
-                    continue
             else:
-                break  # Studiepoeng er gyldig (0-30)
+                break 
+             
     
         return Nytt_emne_navn, semester, studiepoeng
     

@@ -1,8 +1,9 @@
 import FunksjonerE as E
 import FunksjonO as O
 
-Emnekoder = []
-
+Emnenavn = []
+Semester= []
+Studiepoeng = []
 
 
 while True:
@@ -15,16 +16,11 @@ while True:
             break
 
       elif valg == 1: #Lag et nytt emne 
-            # Slik "fanger" du verdiene som returneres fra funksjonen:
             emnenavn, semester, studiepoeng = E.Nytt_emne()
             
-            # Nå har du verdiene i separate variabler:
-            print(f"Emnenavn: {emnenavn}")
-            print(f"Semester: {semester}")
-            print(f"Studiepoeng: {studiepoeng}")
-            
-            # Du kan også lagre i listen
-            Emnekoder.append(emnenavn)
+            Emnenavn.append(emnenavn)
+            Semester.append(semester)
+            Studiepoeng.append(studiepoeng)
             
             input("Trykk enter...")
       
