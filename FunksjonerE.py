@@ -58,11 +58,7 @@ def Nytt_emne():
             if studiepoeng < 0:
                 print("Det kan ikke være mindre enn 0")
             elif studiepoeng > 30:
-                print("Jeg tror kanskje du har skrevet litt høyt studiepoeng")
-                print(f"Er du sikker på at {studiepoeng} er riktig?")
-                korrekt = check_var("[1] Ja \n[2] Nei \n")
-                if korrekt == "1" or korrekt == "ja":
-                    break
+                print("Det kan ikke være over 30")
             else:
                 break 
              
@@ -83,4 +79,5 @@ def meny():
             \n7. Les inn emnene og studeplanen fra fil\
             \nX. Avslutt")
 
-Nytt_emne()
+if __name__ == "__Main__":
+    Nytt_emne()

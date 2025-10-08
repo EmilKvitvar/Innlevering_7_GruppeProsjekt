@@ -24,7 +24,9 @@ def lag_nytt_emne():
     studiepoeng_liste.append(studiepoeng)
 
     print (f"emnet{kode}, ({semester},{studiepoeng} stp) er lagt til")
-    
+
+
+if __name__ == "__main__":
 lag_nytt_emne()
 print(emnekoder, semestre, studiepoeng)
 
