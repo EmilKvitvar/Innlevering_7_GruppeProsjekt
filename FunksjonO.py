@@ -27,6 +27,6 @@ def lag_nytt_emne():
 
 
 if __name__ == "__main__":
-lag_nytt_emne()
-print(emnekoder, semestre, studiepoeng)
+    lag_nytt_emne()
+    print(emnekoder, semestre, studiepoeng)
 
