@@ -7,6 +7,29 @@ Studiepoeng_liste = []
 Studieplan = [[] for i in range (6)]
 
 #Fag for å teste:
+Emnenavn_liste.append("DAT120")
+Semester_liste.append("Host")
+Studiepoeng_liste.append(10)
+
+Emnenavn_liste.append("MAT111")
+Semester_liste.append("Host")
+Studiepoeng_liste.append(20)
+
+Emnenavn_liste.append("ENG110")
+Semester_liste.append("Vaar")
+Studiepoeng_liste.append(5)
+
+Emnenavn_liste.append("DAT210")
+Semester_liste.append("Vaar")
+Studiepoeng_liste.append(10)
+
+Emnenavn_liste.append("MAT211")
+Semester_liste.append("Host")
+Studiepoeng_liste.append(20)
+
+Emnenavn_liste.append("STA100")
+Semester_liste.append("Vaar")
+Studiepoeng_liste.append(5)
 
 
 
@@ -49,8 +72,17 @@ while True:
       elif valg == 3:
             #Skriv ut ei liste over alle registrerte emner
             continue
+      
+      elif valg == 4:
+            E.print_studieplan(Studieplan)
 
-
+      elif valg == 5:
+            studiepoeng_total = E.gyldig_studieplan(Emnenavn_liste, Semester_liste, Studiepoeng_liste, Studieplan)
+            if studiepoeng_total == 180:
+                  print("Studieplanen er 180 poeng og gyldig")
+            else:
+                  print(f"Studieplanen er ugyldig, du mangler {180-studiepoeng_total} poeng")
+            input("Trykk enter...")
 
       else:
             print("\n Velg et av valgene ")

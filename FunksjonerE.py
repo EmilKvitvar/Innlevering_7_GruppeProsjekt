@@ -202,6 +202,24 @@ def legg_til_emne_i_studieplanen(Emnenavn, Semester, Studiepoeng, Studieplan):
     
     print("\nFerdig med å gå gjennom emnene!")
 
+def print_studieplan(studieplan_liste):
+    for i in range(len(studieplan_liste)):
+        print(f"I semester {i + 1} har du fagene:")
+        if len(studieplan_liste[i]) == 0:
+            print("  Ingen fag")
+        else:
+            for emne in studieplan_liste[i]:
+                print(f"  {emne}")
+        input("Trykk enter")
+
+def gyldig_studieplan(Emnenavn, Semester, Studiepoeng, Studieplan):
+    total = 0
+    for semester_nr in range(len(Studieplan)):
+        for emne_i_semester in Studieplan[semester_nr]:
+            if emne_i_semester in Emnenavn:
+                indeks = Emnenavn.index(emne_i_semester)
+                total += Studiepoeng[indeks]
+    return total
 
 
 
