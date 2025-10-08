@@ -98,7 +98,6 @@ def Nytt_emne(Gammelt_emne):
     return Nytt_emne_navn, semester, studiepoeng, Fjerne
 
 def sjekk_studiepoeng_i_semester(semester_nr, Emnenavn, Studiepoeng, Studieplan):
-    """Regner ut total studiepoeng i et semester"""
     total = 0
     for emne_i_semester in Studieplan[semester_nr]:
         if emne_i_semester in Emnenavn:
