@@ -60,6 +60,18 @@ while True:
                   print(f"Studieplanen er ugyldig, du mangler {180-studiepoeng_total} poeng")
             input("Trykk enter...")
 
+      elif valg == 6:
+            skrive_til_fil_input = input("Trykk 1 for å skrive emner til fil eller trykk 2 for å skrive studieplan til fil.")
+            if skrive_til_fil_input == 1:
+                  J.lagre_emner_til_fil(Emnenavn_liste, Studiepoeng_liste, Semester_liste, filnavn="emner.txt")
+                  print("Emnene ble lagret til fil")
+                  input("Trykk enter")
+
+            elif skrive_til_fil_input == 2:
+                  J.lagre_studieplan_til_fil(Studieplan, filnavn="studieplan.txt")
+                  print("Studieplanen ble lagret til fil.")
+                  input("Trykk enter")
+
       elif valg == 7:
             Emnenavn_liste,Semester_liste,Studiepoeng_liste, = O.importer_studieplan(Emnenavn_liste, Semester_liste, Studiepoeng_liste)
 
