@@ -1,35 +1,12 @@
 import FunksjonerE as E
 import FunksjonO as O
+import joakim2 as J
 
 Emnenavn_liste = []
 Semester_liste = []
 Studiepoeng_liste = []
 Studieplan = [[] for i in range (6)]
 
-#Fag for å teste:
-Emnenavn_liste.append("DAT120")
-Semester_liste.append("Host")
-Studiepoeng_liste.append(10)
-
-Emnenavn_liste.append("MAT111")
-Semester_liste.append("Host")
-Studiepoeng_liste.append(20)
-
-Emnenavn_liste.append("ENG110")
-Semester_liste.append("Vaar")
-Studiepoeng_liste.append(5)
-
-Emnenavn_liste.append("DAT210")
-Semester_liste.append("Vaar")
-Studiepoeng_liste.append(10)
-
-Emnenavn_liste.append("MAT211")
-Semester_liste.append("Host")
-Studiepoeng_liste.append(20)
-
-Emnenavn_liste.append("STA100")
-Semester_liste.append("Vaar")
-Studiepoeng_liste.append(5)
 
 
 
@@ -67,11 +44,10 @@ while True:
       
       elif valg == 2:
             E.legg_til_emne_i_studieplanen(Emnenavn_liste, Semester_liste,Studiepoeng_liste, Studieplan)
-            continue
+
 
       elif valg == 3:
-            #Skriv ut ei liste over alle registrerte emner
-            continue
+            J.print_liste_av_registrerte_emner(Emnenavn_liste, Semester_liste, Studiepoeng_liste)
       
       elif valg == 4:
             E.print_studieplan(Studieplan)
@@ -83,6 +59,21 @@ while True:
             else:
                   print(f"Studieplanen er ugyldig, du mangler {180-studiepoeng_total} poeng")
             input("Trykk enter...")
+
+      elif valg == 6:
+            skrive_til_fil_input = input("Trykk 1 for å skrive emner til fil eller trykk 2 for å skrive studieplan til fil.")
+            if skrive_til_fil_input == 1:
+                  J.lagre_emner_til_fil(Emnenavn_liste, Studiepoeng_liste, Semester_liste, filnavn="emner.txt")
+                  print("Emnene ble lagret til fil")
+                  input("Trykk enter")
+
+            elif skrive_til_fil_input == 2:
+                  J.lagre_studieplan_til_fil(Studieplan, filnavn="studieplan.txt")
+                  print("Studieplanen ble lagret til fil.")
+                  input("Trykk enter")
+
+      elif valg == 7:
+            Emnenavn_liste,Semester_liste,Studiepoeng_liste, = O.importer_studieplan(Emnenavn_liste, Semester_liste, Studiepoeng_liste)
 
       else:
             print("\n Velg et av valgene ")

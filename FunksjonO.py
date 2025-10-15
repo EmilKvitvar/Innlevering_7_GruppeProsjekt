@@ -25,39 +25,32 @@ def lag_nytt_emne():
     print (f"emnet{kode}, ({semester},{studiepoeng} stp) er lagt til")
 
 
-def importer_studieplan(filnavn, Emnenavn, Semester, Studiepoeng):
+def importer_studieplan(Emnenavn, Semester, Studiepoeng):
     filnavn = "Studieplan_energi.txt"
     """
     Leser fag fra tekstfil og fyller listene Emnenavn, Semester og Studiepoeng.
     Format i filen skal være:
-        Emnenavn;Semester;Studiepoeng
-    eller
-        Emnenavn,Semester,Studiepoeng
+        Emnenavn : Semester : Studiepoeng
+    hvor Semester er "Host" eller "Vaar"
     Linjer som starter med # eller som er tomme blir hoppet over.
-    Returnerer antall fag som ble importert.
+    Returnerer de oppdaterte listene.
     """
     try:
         with open(filnavn, "r", encoding="utf-8") as f:
             linjer = f.readlines()
     except FileNotFoundError:
         print(f"Filen '{filnavn}' ble ikke funnet.")
-        return 0
+        return Emnenavn, Semester, Studiepoeng
 
     antall = 0
     for i, linje in enumerate(linjer, start=1):
         linje = linje.strip()
-        if not linje or linje.startswith("#"):
+        if not linje or linje.startswith("#") or ":" not in linje:
             continue
 
-        # Finn separator
-        if ";" in linje:
-            deler = linje.split(";")
-        elif "," in linje:
-            deler = linje.split(",")
-        else:
-            print(f"Ugyldig format i linje {i}: '{linje}' (mangler ; eller ,)")
-            continue
-
+        # Split på ":"
+        deler = linje.split(":")
+        
         if len(deler) < 3:
             print(f"For få elementer i linje {i}: '{linje}'")
             continue
@@ -66,11 +59,25 @@ def importer_studieplan(filnavn, Emnenavn, Semester, Studiepoeng):
         sem_str = deler[1].strip()
         sp_str = deler[2].strip()
 
+        # Normaliser semester-navn (håndter store/små bokstaver)
+        sem_str_lower = sem_str.lower()
+        if sem_str_lower == "host":
+            semester = "Host"
+        elif sem_str_lower == "vaar":
+            semester = "Vaar"
+        else:
+            print(f"Ukjent semester '{sem_str}' i linje {i}: '{linje}'")
+            continue
+
         try:
-            semester = int(sem_str)
             studiepoeng = float(sp_str.replace(",", "."))
         except ValueError:
-            print(f"Feil i linje {i}: '{linje}' (semester/studiepoeng ikke tall)")
+            print(f"Feil i linje {i}: '{linje}' (studiepoeng ikke tall)")
+            continue
+
+        # Sjekk om emnet allerede finnes
+        if navn in Emnenavn:
+            print(f"Emnet '{navn}' finnes allerede og hoppes over")
             continue
 
         Emnenavn.append(navn)
@@ -79,4 +86,4 @@ def importer_studieplan(filnavn, Emnenavn, Semester, Studiepoeng):
         antall += 1
 
     print(f"\nImporterte {antall} fag fra '{filnavn}'.")
-    return navn, semester, studiepoeng 
+    return Emnenavn, Semester, Studiepoeng 
