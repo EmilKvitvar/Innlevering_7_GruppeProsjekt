@@ -1,47 +1,70 @@
+# ========== VALIDERINGS- OG INNDATA-FUNKSJONER ==========
+# Disse funksjonene sørger for at brukeren skriver inn gyldige data
+
 def check_float(variabel):
+    """
+    # Validerer float-input med støtte for k/m-forkortelser
+    # Eksempel: "1.5k" blir til 1500.0, "2m" blir til 2000000.0
+    # 'x' avslutter/avbryter input
+    """
     while True:
-        multiplikator = {"m": 1_000_000, "k": 1_000 } #prøver noe nytt 
-        verdi = input(variabel).strip().lower().replace(",",".")
-        if verdi.endswith("x"):
+        multiplikator = {"m": 1_000_000, "k": 1_000 } # Dictionary for forkortelser
+        verdi = input(variabel).strip().lower().replace(",",".")  # Rensker input
+        if verdi.endswith("x"):  # Bruker vil avslutte
             return None
         try:
-            if verdi[-1] in multiplikator:
+            if verdi[-1] in multiplikator:  # Sjekker om siste tegn er k/m
                 return float(verdi[:-1]) * multiplikator[verdi[-1]]
             else:
-                return float(verdi)
+                return float(verdi)  # Vanlig float-konvertering
         
         except ValueError:
-            print("\nSkriv et gyldig tall")
+            print("\nSkriv et gyldig tall")  # Feilmelding ved ugyldig input
         
 def check_int(variabel):
+    """
+    # Validerer heltall-input med samme funksjonalitet som check_float
+    # Brukes for menovalg, studiepoeng, semester osv.
+    """
     while True:
         multiplikator = {"m": 1_000_000, "k": 1_000 }
-        verdi = input(variabel).lower().strip().replace(";",".")
+        verdi = input(variabel).lower().strip().replace(";",".")  # Rensker input
 
-        if verdi.endswith("x"):
+        if verdi.endswith("x"):  # Avslutter hvis 'x'
             return None
         try:
-            if verdi[-1] in multiplikator:
+            if verdi[-1] in multiplikator:  # Sjekker forkortelser
                 return int(verdi[:-1]) * multiplikator[verdi[-1]]
             
             else:
-                return int(verdi)
+                return int(verdi)  # Vanlig int-konvertering
         except ValueError:
-            print("\nSkriv et gyldig tall")
+            print("\nSkriv et gyldig tall")  # Feilmelding
 
 def check_var(variabel):
+    """
+    # Validerer tekstinput og normaliserer norske tegn
+    # Konverterer å->aa, ø->o, æ->ae for konsistens
+    """
     while True:
         verdi = input(variabel).lower().strip().replace("å","aa").replace("ø","o").replace("æ","ae")
 
-        if verdi.endswith("x"):
+        if verdi.endswith("x"):  # Avslutter hvis 'x'
             return None
         else:
-            return verdi
+            return verdi  # Returnerer det normaliserte input
 
+# ========== EMNEHÅNDTERING ==========
 def Nytt_emne(Gammelt_emne):
+    """
+    # Hovedfunksjon for å legge til nye emner eller fjerne eksisterende
+    # Håndterer duplikatkontroll og gir bruker valg ved konflikter
+    """
     while True:
+        # Be om emnekode og konverter til store bokstaver
         Nytt_emne_navn = check_var("Hva er Emnekoden? eks:DAT120: ").upper()
         
+        # Sjekk om emnet allerede eksisterer
         if Nytt_emne_navn in Gammelt_emne:
             print(f"{Nytt_emne_navn} er allerede lagt til, vil du \n[1] Beholde og legge til et nytt emne \
                   \n[2] Fjerne faget fra minnet?")
@@ -52,32 +75,36 @@ def Nytt_emne(Gammelt_emne):
                 # Returner emnet som skal fjernes
                 return Nytt_emne_navn, None, None, 1
             else:
-                continue
+                continue  # Ugyldig valg, prøv igjen
 
-
+        # Spør bruker om semestertype
         while True:
             xsemester = input("Hvilket semester? \n [1] Høst \n [2] Vår \n ").lower().strip()
             if xsemester == "høst" or xsemester == "host" or xsemester == "1":
-                semester = "Host"
+                semester = "Host"  # Standardisert format
                 break
             elif xsemester == "vår" or xsemester == "vaar" or xsemester == "2":
-                semester = "Vaar "
+                semester = "Vaar "  # Standardisert format med mellomrom
                 break
             else:
                 "Skriv høst eller vår!"
                 print("Trykk enter")
 
+        # Spør bruker om studiepoeng med validering
         while True:
             studiepoeng = check_float("Hvor mange studiepoeng gir emnet? ")
             if studiepoeng < 0:
                 print("Det kan ikke være mindre enn 0")
             elif studiepoeng > 30:
-                print("Det kan ikke være over 30")
+                print("Det kan ikke være over 30")  # Maksimalt 30 per emne
             else:
-                break 
+                break  # Gyldig verdi
+        
+        # Vis sammendrag og be om bekreftelse
         print(f"Emnenavnet er {Nytt_emne_navn}")
         print(f"Faget er på {semester.lower()}en")
         print(f"Du får {studiepoeng} studiepoeng")
+        
         while True:
             x = check_var("Ser dette riktig ut? [1/ja] eller [2/nei]: ")
             if x == "ja" or x == "1":
@@ -89,11 +116,13 @@ def Nytt_emne(Gammelt_emne):
             else:
                 print("Skriv 'ja' eller '1' for ja, 'nei' eller '2' for nei")
                 continue
+        
+        # Hvis bruker bekrefter, avslutt løkken
         if ferdig == 1:
-            Fjerne = 0
+            Fjerne = 0  # Indikerer at emnet skal legges til
             break
         else:
-            continue
+            continue  # Start på nytt
     
     return Nytt_emne_navn, semester, studiepoeng, Fjerne
 

@@ -1,4 +1,10 @@
+# ========== MENY OG BRUKERGRENSESNITT ==========
+
 def meny():
+    """
+    # Viser hovedmenyen med alle tilgjengelige valg
+    # Brukes i hovedløkken for å guide brukeren
+    """
     print("1.lag et nytt emne")
     print("2.legg til et emne i studieplanen")
     print("3.skriv ut et liste over alle registrerte emner")
@@ -9,15 +15,22 @@ def meny():
     print("8.avslutt")
 
 
-emnekoder         = []    #fag
-semestre          = []    # oddetall(høst) og partall(vår)
-studiepoeng_liste = []    # heltall
+# ========== GLOBAL DATALAGRING ==========
+# Disse listene brukes for testing og lagring av emnedata
+emnekoder         = []    # Liste over fagkoder (f.eks "DAT120")
+semestre          = []    # Liste over semestertype: oddetall(høst), partall(vår)
+studiepoeng_liste = []    # Liste over studiepoeng som heltall
 
 def lag_nytt_emne():
+    """
+    # Enkel funksjon for å legge til emne (ikke brukt i hovedprogrammet)
+    # Samler inn emnekode, semester og studiepoeng fra bruker
+    """
     kode = input( "skriv emnekode her:")
     semester = input("skriv semester, (høst/ vår):")
     studiepoeng = int(input("skriv inn antall studeipoeng:"))
 
+    # Legger til i de globale listene
     emnekoder.append(kode)
     semestre.append(semester)
     studiepoeng_liste.append(studiepoeng)
@@ -25,8 +38,14 @@ def lag_nytt_emne():
     print (f"emnet{kode}, ({semester},{studiepoeng} stp) er lagt til")
 
 
+# ========== FILHÅNDTERING ==========
 def importer_studieplan(Emnenavn, Semester, Studiepoeng):
-    filnavn = "Studieplan_energi.txt"
+    """
+    # Leser ferdig studieplan fra tekstfil og fyller listene
+    # Forventer format: Emnenavn : Semester : Studiepoeng
+    # Hopper over kommentarlinjer (#) og tomme linjer
+    """
+    filnavn = "Studieplan_energi.txt"  # Fast filnavn for energistudiet
     """
     Leser fag fra tekstfil og fyller listene Emnenavn, Semester og Studiepoeng.
     Format i filen skal være:
