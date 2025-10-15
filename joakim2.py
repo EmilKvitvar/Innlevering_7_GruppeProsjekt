@@ -1,31 +1,25 @@
-# ========== TESTDATA OG UTSKRIFTSFUNKSJONER ==========
-# Denne modulen håndterer visning av data og lagring til filer
-
-# Oppretter testdata kun hvis filen kjøres direkte (ikke når importert)
 if __name__ == "__main__":
-    # ========== TESTDATA FOR Å TESTE PROGRAMMET ==========
     liste_semester = []
-    liste_semester.append("Høst")     # ELE100 - Høst
-    liste_semester.append("Høst")     # DAT120 - Høst  
-    liste_semester.append("Høst")     # MAT100 - Høst
-    liste_semester.append("Høst")     # FYS103 - Høst
-    liste_semester.append("Vår")      # KJE100 - Vår
+    liste_semester.append("Høst")     
+    liste_semester.append("Høst")     
+    liste_semester.append("Høst")     
+    liste_semester.append("Høst")    
+    liste_semester.append("Vår")  
 
     liste_emnekode = []
-    liste_emnekode.append("ELE100")   # Elektriske kretser
-    liste_emnekode.append("DAT120")   # Programmering og databehandling
-    liste_emnekode.append("MAT100")   # Matematikk grunnkurs
-    liste_emnekode.append("FYS103")   # Fysikk for ingeniører
-    liste_emnekode.append("KJE100")   # Kjemi grunnkurs
+    liste_emnekode.append("ELE100")   
+    liste_emnekode.append("DAT120")   
+    liste_emnekode.append("MAT100")   
+    liste_emnekode.append("FYS103")   
+    liste_emnekode.append("KJE100")  
 
     liste_studiepoeng = []
-    liste_studiepoeng.append(10)      # ELE100 - 10 studiepoeng
-    liste_studiepoeng.append(10)      # DAT120 - 10 studiepoeng
-    liste_studiepoeng.append(5)       # MAT100 - 5 studiepoeng
-    liste_studiepoeng.append(10)      # FYS103 - 10 studiepoeng
-    liste_studiepoeng.append(10)      # KJE100 - 10 studiepoeng
+    liste_studiepoeng.append(10)      
+    liste_studiepoeng.append(10)     
+    liste_studiepoeng.append(5)       
+    liste_studiepoeng.append(10)      
+    liste_studiepoeng.append(10)      
 
-    # Studieplan: 6 semestre (3 år) med tomme lister
     studieplan = [[] for i in range(6)]
 
 # ========== STUDIEPLANLEGGING ==========
@@ -37,7 +31,7 @@ def legg_til_emne_i_studieplan(liste_semester, liste_emnekode, liste_studiepoeng
     print()
     print(liste_semester, liste_emnekode, liste_studiepoeng)  # Viser tilgjengelige emner
 
-    # Be bruker velge emne fra listen (1-indeksert)
+    # Be bruker velge emne fra listen
     emne_index = int(input("Velg emnet etter hvilket nummer det er i lista (Bruk tall): ")) - 1
     print(f"Du valgte: {liste_emnekode[emne_index]}")
     
@@ -76,10 +70,9 @@ def legg_til_emne_i_studieplan(liste_semester, liste_emnekode, liste_studiepoeng
 
 # ========== UTSKRIFT OG VISNING ==========
 def print_liste_av_registrerte_emner(liste_emnekode, liste_semester, liste_studiepoeng):
-    """
     # Viser alle registrerte emner i en oversiktlig tabell
     # Nummererer emnene for lett referanse
-    """
+    
     print("De registrerte emnene er: ")
     nummer = 0
     for i, j, k in zip(liste_emnekode, liste_studiepoeng, liste_semester):
@@ -89,10 +82,9 @@ def print_liste_av_registrerte_emner(liste_emnekode, liste_semester, liste_studi
 
 # ========== FILLAGRING ==========
 def lagre_emner_til_fil(liste_emnekode, liste_studiepoeng, liste_semester, filnavn="emner.txt"):
-    """
     # Lagrer alle emner til en tekstfil i tabellformat
     # Bruker tab-separerte verdier for lesbarhet
-    """
+    
     with open(filnavn, "w", encoding="utf-8") as fil:
         fil.write("Emnekode\tStudiepoeng\tSemester\n")  # Overskrifter
         for kode, poeng, sem in zip(liste_emnekode, liste_studiepoeng, liste_semester):
@@ -100,10 +92,9 @@ def lagre_emner_til_fil(liste_emnekode, liste_studiepoeng, liste_semester, filna
     print(f"Emner lagret til {filnavn}")
 
 def lagre_studieplan_til_fil(studieplan, filnavn="studieplan.txt"):
-    """
     # Lagrer den organiserte studieplanen til fil
     # Viser hvilke emner som er i hvert semester
-    """
+    
     with open(filnavn, "w", encoding="utf-8") as fil:
         for i, semester in enumerate(studieplan, start=1):
             fil.write(f"Semester {i}:\n")
