@@ -1,12 +1,12 @@
 def meny():
-    print("lag et nytt emne")
-    print("legg til et emne i studieplanen")
-    print("skriv ut et liste over alle registrerte emner")
-    print("skriv ut studieplanen med hvilke emner som er i hvert semester")
-    print("sjekk om studieplanen er gyldig eller ikke")
-    print("lagre emnene og studieplanen til fil")
-    print("les inn emnene og studieplan til fil")
-    print("avslutt")
+    print("1.lag et nytt emne")
+    print("2.legg til et emne i studieplanen")
+    print("3.skriv ut et liste over alle registrerte emner")
+    print("4.skriv ut studieplanen med hvilke emner som er i hvert semester")
+    print("5.sjekk om studieplanen er gyldig eller ikke")
+    print("6.lagre emnene og studieplanen til fil")
+    print("7.les inn emnene og studieplan til fil")
+    print("8.avslutt")
 
 
 emnekoder         = []    #fag
