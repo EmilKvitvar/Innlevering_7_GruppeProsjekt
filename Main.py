@@ -61,7 +61,7 @@ while True:
             input("Trykk enter...")
 
       elif valg == 6:
-            skrive_til_fil_input = input("Trykk 1 for å skrive emner til fil eller trykk 2 for å skrive studieplan til fil.")
+            skrive_til_fil_input = E.check_int("Trykk 1 for å skrive emner til fil eller trykk 2 for å skrive studieplan til fil.")
             if skrive_til_fil_input == 1:
                   J.lagre_emner_til_fil(Emnenavn_liste, Studiepoeng_liste, Semester_liste, filnavn="emner.txt")
                   print("Emnene ble lagret til fil")
